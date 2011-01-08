@@ -1,9 +1,10 @@
 package {
+import flash.geom.Point;
 import net.flashpunk.Entity;
 import net.flashpunk.graphics.Image;
 
 public class Ship extends Entity {
-	public var vel:vec = new vec(0,0);
+	public var vel:Point = new Point(0,0);
 
 	public function Ship() { 
 	}

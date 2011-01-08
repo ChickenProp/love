@@ -1,4 +1,5 @@
 package {
+import flash.geom.Point;
 import net.flashpunk.graphics.Image;
 
 public class Bullet extends Ship {
@@ -8,7 +9,7 @@ public class Bullet extends Ship {
 	public function Bullet(_x:Number, _y:Number) {
 		x = _x;
 		y = _y;
-		vel = new vec(-3, 0);
+		vel = new Point(-3, 0);
 
 		image = new Image(BULLET_WHITE);
 		image.scale = 0.2;

@@ -1,4 +1,5 @@
 package {
+import flash.geom.Point;
 import net.flashpunk.utils.Input;
 import net.flashpunk.utils.Key;
 import net.flashpunk.graphics.Image;
@@ -12,7 +13,7 @@ public class Player extends Ship {
 	}
 
 	override public function update() : void {
-		var a:vec = new vec(0,0);
+		var a:Point = new Point(0,0);
 		var rate : Number = 2;
 
 		if (Input.check(Key.RIGHT))
@@ -24,7 +25,7 @@ public class Player extends Ship {
 		if (Input.check(Key.DOWN))
 			a.y++;
 
-		a = a.normalize();
+		a.normalize(1);
 		accel(rate * a.x, rate * a.y);
 
 		friction();
