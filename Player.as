@@ -9,6 +9,8 @@ public class Player extends Ship {
 	[Embed(source = 'media/player.png')]
 	private const PLAYER:Class;
 
+	public var health:int = 100;
+
 	public function Player() { 
 		image = new Image(PLAYER);
 		type = "player";
@@ -34,8 +36,15 @@ public class Player extends Ship {
 		friction();
 		move();
 
-		if (collide("bullet", x, y))
-			Game.paused = true;
+		var b:Bullet = collide("bullet", x, y) as Bullet;
+		if (b) {
+			health -= 10;
+			FP.world.remove(b);
+		}
+
+		if (health <= 0) {
+			FP.engine.init();
+		}
 	}
 }
 }
