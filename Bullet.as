@@ -10,6 +10,8 @@ public class Bullet extends Ship {
 		x = _x;
 		y = _y;
 		vel = new Point(-3, 0);
+		type = "bullet";
+		setHitbox(10, 10);
 
 		image = new Image(BULLET_WHITE);
 		image.scale = 0.2;

@@ -1,4 +1,5 @@
 package {
+import net.flashpunk.FP;
 import flash.geom.Point;
 import net.flashpunk.utils.Input;
 import net.flashpunk.utils.Key;
@@ -10,6 +11,8 @@ public class Player extends Ship {
 
 	public function Player() { 
 		image = new Image(PLAYER);
+		type = "player";
+		setHitbox(50, 50);
 	}
 
 	override public function update() : void {
@@ -30,6 +33,9 @@ public class Player extends Ship {
 
 		friction();
 		move();
+
+		if (collide("bullet", x, y))
+			Game.paused = true;
 	}
 }
 }
