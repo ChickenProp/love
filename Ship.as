@@ -1,5 +1,6 @@
 package {
 import net.flashpunk.Entity;
+import net.flashpunk.graphics.Image;
 
 public class Ship extends Entity {
 	public var vel:vec = new vec(0,0);
@@ -24,5 +25,15 @@ public class Ship extends Entity {
 	override public function update() : void {
 		move();
 	}
+
+	public function get image() : Image {
+		return _image;
+	}
+	public function set image(i:Image) : void {
+		_image = i;
+		graphic = i;
+	}
+
+	internal var _image:Image;
 }
 }

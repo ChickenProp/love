@@ -8,7 +8,7 @@ public class Player extends Ship {
 	private const PLAYER:Class;
 
 	public function Player() { 
-		graphic = new Image(PLAYER);
+		image = new Image(PLAYER);
 	}
 
 	override public function update() : void {

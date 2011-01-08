@@ -10,11 +10,8 @@ public class Bullet extends Ship {
 		y = _y;
 		vel = new vec(-3, 0);
 
-		/* It's internally stored as a Graphic, so I have to set scale
-		   before I assign it. */
-		var img:* = new Image(BULLET_WHITE);
-		img.scale = 0.2;
-		graphic = img;
+		image = new Image(BULLET_WHITE);
+		image.scale = 0.2;
 	}
 }
 
