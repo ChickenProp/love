@@ -48,7 +48,7 @@ public class Game extends World {
 	}
 
 	public function addBullet() : void {
-		add(new Bullet(750, FP.rand(500) + 50,
+		add(new Bullet(810, FP.rand(520) + 70,
 		               FP.rand(3) ? "green" : "red"));
 	}
 

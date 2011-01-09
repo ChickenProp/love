@@ -14,8 +14,8 @@ public class Player extends Ship {
 	public static var scoreMultiplier:int;
 
 	public function Player() { 
-		x = 32;
-		y = 32;
+		x = 50;
+		y = 300;
 
 		image = new Image(PLAYER);
 		image.centerOO();
