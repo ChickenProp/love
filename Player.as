@@ -15,6 +15,9 @@ public class Player extends Ship {
 
 	public var ow:Sfx = new Sfx(OW);
 
+	public static var score:int;
+	public static var scoreMultiplier:int;
+
 	public function Player() { 
 		x = 32;
 		y = 32;
@@ -25,6 +28,8 @@ public class Player extends Ship {
 		setHitbox(50, 50);
 		centerOrigin();
 		health = 100;
+		score = 0;
+		scoreMultiplier = 1;
 	}
 
 	override public function update() : void {
@@ -47,19 +52,28 @@ public class Player extends Ship {
 		move();
 
 		var b:Bullet = collide("bullet", x, y) as Bullet;
-		if (b) {
-			FP.world.remove(b);
-			if (b.color == "red") {
-				health -= 10;
-				ow.play();
-			}
-			else {
-				health += 10;
-			}
-		}
+		if (b)
+			hitBullet(b);
 
 		if (health <= 0) {
 			Game.gameOver();
+		}
+	}
+
+	public function hitBullet(b:Bullet) : void {
+		FP.world.remove(b);
+		if (b.color == "red") {
+			health -= 10;
+			scoreMultiplier = 1;
+			ow.play();
+		}
+		else {
+			health += 1;
+			var points:int = 10 * scoreMultiplier;
+			score += points;
+			FP.world.add(new Textparticle(b.x, b.y,
+			                              points.toString()));
+			scoreMultiplier++;
 		}
 	}
 
@@ -69,6 +83,6 @@ public class Player extends Ship {
 	public static function set health(h:int) : void {
 		_health = FP.clamp(h, 0, 100);
 	}
-	public static var _health:int = 100;
+	internal static var _health:int;
 }
 }

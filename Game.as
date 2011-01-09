@@ -16,6 +16,7 @@ public class Game extends World {
 		                function () : int { return 2*Player.health; }));
 		add(new Lifebar(550, 10, 200, 20, "Wife's health",
 		                function () : int { return 2*wifeHealth; }));
+		add(new Scoredisplay);
 	}
 
 	override public function update() : void {
@@ -46,7 +47,7 @@ public class Game extends World {
 
 	public function addBullet() : void {
 		add(new Bullet(750, FP.rand(500) + 50,
-		               FP.rand(10) ? "red" : "green"));
+		               FP.rand(3) ? "red" : "green"));
 	}
 
 	public static function gameOver() : void {
