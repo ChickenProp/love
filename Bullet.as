@@ -21,6 +21,8 @@ public class Bullet extends Ship {
 
 		image = new Image(Bullet["bullet_" + color]);
 		image.scale = 0.2;
+		image.centerOO();
+		centerOrigin();
 	}
 
 	override public function update () : void {
