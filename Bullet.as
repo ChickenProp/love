@@ -32,7 +32,7 @@ public class Bullet extends Ship {
 			FP.world.remove(this);
 			if (color == "red") {
 				Game.wifeHealth -= 10;
-				Player.scoreMultiplier = 1;
+				Player.scoreMultiplier = 0;
 				Audio.wife_ow.play();
 			}
 			else {

@@ -24,7 +24,7 @@ public class Player extends Ship {
 		centerOrigin();
 		health = 100;
 		score = 0;
-		scoreMultiplier = 1;
+		scoreMultiplier = 0;
 	}
 
 	override public function update() : void {
@@ -60,17 +60,20 @@ public class Player extends Ship {
 		FP.world.remove(b);
 		if (b.color == "red") {
 			health -= 10;
-			var points:int = 10 * scoreMultiplier;
-			score += points;
-			FP.world.add(new Textparticle(b.x, b.y,
-			                              points.toString()));
+
 			scoreMultiplier++;
+
 			Audio.player_ow.play();
 		}
 		else {
 			health += 10;
 			Audio.player_yay.play();
 		}
+
+		var points:int = Math.max(10 * scoreMultiplier, 10);
+		score += points;
+		FP.world.add(new Textparticle(b.x, b.y,
+		                              points.toString()));
 	}
 
 	public static function get health() : int {
