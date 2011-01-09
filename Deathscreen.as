@@ -19,9 +19,14 @@ public class Deathscreen extends Graphicscreen {
 		                                160, 400, 800, 600);
 		presstoplay.size = 30;
 
+		var score:Text = new Text("Score: " + Player.score
+		                          + "\nHigh score: " + Player.highScore,
+		                          300, 500, 800, 600);
+
 		graphics.add(msg1);
 		graphics.add(msg2);
 		graphics.add(presstoplay);
+		graphics.add(score);
 
 		graphics.children.map(function(g:Graphic, a:*, b:*):void {
 		                var i:Image = g as Image;
@@ -40,7 +45,6 @@ public class Deathscreen extends Graphicscreen {
 
 		if (alpha >= 1 && Input.lastKey && Input.pressed(Input.lastKey))
 			FP.world = new Game;
-			
 	}
 }
 }
