@@ -1,6 +1,7 @@
 package {
 import net.flashpunk.FP;
 import flash.geom.Point;
+import net.flashpunk.*;
 import net.flashpunk.utils.Input;
 import net.flashpunk.utils.Key;
 import net.flashpunk.graphics.Image;
@@ -9,12 +10,18 @@ public class Player extends Ship {
 	[Embed(source = 'media/player.png')]
 	private const PLAYER:Class;
 
-	public var health:int = 100;
+	[Embed(source = 'media/player-ow.mp3', mimeType = 'audio/mpeg')]
+	private const OW:Class;
+
+	public var ow:Sfx = new Sfx(OW);
+
+	public static var health:int = 100;
 
 	public function Player() { 
 		image = new Image(PLAYER);
 		type = "player";
 		setHitbox(50, 50);
+		health = 100;
 	}
 
 	override public function update() : void {
@@ -40,6 +47,7 @@ public class Player extends Ship {
 		if (b) {
 			health -= 10;
 			FP.world.remove(b);
+			ow.play();
 		}
 
 		if (health <= 0) {

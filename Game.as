@@ -11,6 +11,7 @@ public class Game extends World {
 		paused = false;
 
 		add(new Player);
+		add(new Lifebar);
 	}
 
 	override public function update() : void {
