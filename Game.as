@@ -32,8 +32,10 @@ public class Game extends World {
 
 		super.update();
 
-		if (wifeHealth <= 0)
+		if (wifeHealth <= 0) {
+			Audio.wife_die.play();
 			gameOver();
+		}
 	}
 
 	public function doBulletSpawnStuff() : void {
@@ -47,7 +49,7 @@ public class Game extends World {
 
 	public function addBullet() : void {
 		add(new Bullet(750, FP.rand(500) + 50,
-		               FP.rand(3) ? "red" : "green"));
+		               FP.rand(3) ? "green" : "red"));
 	}
 
 	public static function gameOver() : void {

@@ -30,9 +30,16 @@ public class Bullet extends Ship {
 
 		if (x <= -10) {
 			FP.world.remove(this);
-			if (color == "green") {
+			if (color == "red") {
 				Game.wifeHealth -= 10;
 				Player.scoreMultiplier = 1;
+				Audio.wife_ow.play();
+			}
+			else {
+				// I don't like the sound effect, or the
+				// mechanic of healing her.
+				//Audio.wife_yay.play();
+				//Game.wifeHealth += 1;
 			}
 		}
 	}

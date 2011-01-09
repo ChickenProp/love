@@ -10,11 +10,6 @@ public class Player extends Ship {
 	[Embed(source = 'media/player.png')]
 	private const PLAYER:Class;
 
-	[Embed(source = 'media/player-ow.mp3', mimeType = 'audio/mpeg')]
-	private const OW:Class;
-
-	public var ow:Sfx = new Sfx(OW);
-
 	public static var score:int;
 	public static var scoreMultiplier:int;
 
@@ -56,6 +51,7 @@ public class Player extends Ship {
 			hitBullet(b);
 
 		if (health <= 0) {
+			Audio.player_die.play();
 			Game.gameOver();
 		}
 	}
@@ -64,16 +60,16 @@ public class Player extends Ship {
 		FP.world.remove(b);
 		if (b.color == "red") {
 			health -= 10;
-			scoreMultiplier = 1;
-			ow.play();
-		}
-		else {
-			health += 1;
 			var points:int = 10 * scoreMultiplier;
 			score += points;
 			FP.world.add(new Textparticle(b.x, b.y,
 			                              points.toString()));
 			scoreMultiplier++;
+			Audio.player_ow.play();
+		}
+		else {
+			health += 10;
+			Audio.player_yay.play();
 		}
 	}
 
