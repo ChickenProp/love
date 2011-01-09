@@ -1,5 +1,6 @@
 package {
 import flash.geom.Point;
+import net.flashpunk.*;
 import net.flashpunk.graphics.Image;
 
 public class Bullet extends Ship {
@@ -20,6 +21,13 @@ public class Bullet extends Ship {
 
 		image = new Image(Bullet["bullet_" + color]);
 		image.scale = 0.2;
+	}
+
+	override public function update () : void {
+		move();
+
+		if (x <= -10)
+			FP.world.remove(this);
 	}
 }
 

@@ -1,6 +1,6 @@
 package {
-import net.flashpunk.FP;
-import net.flashpunk.World;
+import net.flashpunk.*;
+import net.flashpunk.graphics.*;
 import net.flashpunk.utils.*;
 
 public class Game extends World {
@@ -11,7 +11,8 @@ public class Game extends World {
 		paused = false;
 
 		add(new Player);
-		add(new Lifebar(function () : int { return Player.health; }));
+		add(new Lifebar(50, 10, 200, 20, "Health",
+		                function () : int { return 2*Player.health; }));
 	}
 
 	override public function update() : void {

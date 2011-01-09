@@ -18,9 +18,14 @@ public class Player extends Ship {
 	public static var health:int = 100;
 
 	public function Player() { 
+		x = 32;
+		y = 32;
+
 		image = new Image(PLAYER);
+		image.centerOO();
 		type = "player";
 		setHitbox(50, 50);
+		centerOrigin();
 		health = 100;
 	}
 
@@ -45,9 +50,14 @@ public class Player extends Ship {
 
 		var b:Bullet = collide("bullet", x, y) as Bullet;
 		if (b) {
-			health -= 10;
 			FP.world.remove(b);
-			ow.play();
+			if (b.color == "red") {
+				health -= 10;
+				ow.play();
+			}
+			else {
+				health += 10;
+			}
 		}
 
 		if (health <= 0) {
