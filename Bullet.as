@@ -28,8 +28,11 @@ public class Bullet extends Ship {
 	override public function update () : void {
 		move();
 
-		if (x <= -10)
+		if (x <= -10) {
 			FP.world.remove(this);
+			if (color == "red")
+				Game.wifeHealth -= 10;
+		}
 	}
 }
 
