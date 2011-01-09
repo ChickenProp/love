@@ -31,6 +31,7 @@ public class Deathscreen extends Graphicscreen {
 
 	override public function update () : void {
 		alpha += 0.1;
+		Audio.music.volume -= 0.1;
 
 		graphics.children.map(function(g:Graphic, a:*, b:*):void {
 		                var i:Image = g as Image;

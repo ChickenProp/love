@@ -2,15 +2,13 @@ package {
 import net.flashpunk.FP;
 import flash.geom.Point;
 import net.flashpunk.*;
-import net.flashpunk.utils.Input;
-import net.flashpunk.utils.Key;
+import net.flashpunk.utils.*;
 import net.flashpunk.graphics.Image;
 
 public class Player extends Ship {
 	[Embed(source = 'media/player.png')]
 	private const PLAYER:Class;
 
-	public static var score:int;
 	public static var scoreMultiplier:int;
 
 	public function Player() { 
@@ -45,6 +43,9 @@ public class Player extends Ship {
 
 		friction();
 		move();
+
+		x = FP.clamp(x, 15, 785);
+		y = FP.clamp(y, 90, 570);
 
 		var b:Bullet = collide("bullet", x, y) as Bullet;
 		if (b)
@@ -83,5 +84,19 @@ public class Player extends Ship {
 		_health = FP.clamp(h, 0, 100);
 	}
 	internal static var _health:int;
+
+	public static function get score() : int { return _score; }
+	public static function set score(s:int) : void {
+		_score = s;
+		highScore = Math.max(highScore, s);
+	}
+	internal static var _score:int;
+
+	public static function get highScore() : int {
+		return Data.readInt("highScore");
+	}
+	public static function set highScore(s:int) : void {
+		Data.writeInt("highScore", s);
+	}
 }
 }

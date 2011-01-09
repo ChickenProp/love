@@ -20,6 +20,9 @@ public class Audio {
 	
 	[Embed(source = 'media/wife-die.mp3', mimeType = 'audio/mpeg')]
 	private static const WIFE_DIE:Class;
+
+	[Embed(source = 'media/spring-thaw.mp3', mimeType = 'audio/mpeg')]
+	private static const MUSIC:Class;
 	
 	public static var player_ow:Sfx = new Sfx(PLAYER_OW);
 	public static var player_yay:Sfx = new Sfx(PLAYER_YAY);
@@ -27,5 +30,6 @@ public class Audio {
 	public static var wife_ow:Sfx = new Sfx(WIFE_OW);
 	public static var wife_yay:Sfx = new Sfx(WIFE_YAY);
 	public static var wife_die:Sfx = new Sfx(WIFE_DIE);
+	public static var music:Sfx = new Sfx(MUSIC);
 }
 }

@@ -6,6 +6,7 @@ import net.flashpunk.utils.*;
 public class Game extends World {
 	public static var paused:Boolean = false;
 	public var timeToBullet:int = 0;
+	public var rgRatio:Number = 0.3;
 
 	public function Game () {
 		paused = false;
@@ -17,6 +18,8 @@ public class Game extends World {
 		add(new Lifebar(550, 10, 200, 20, "Wife's shields",
 		                function () : int { return 2*wifeHealth; }));
 		add(new Scoredisplay);
+
+		Audio.music.loop();
 	}
 
 	override public function update() : void {
@@ -42,6 +45,8 @@ public class Game extends World {
 		if (timeToBullet <= 0) {
 			addBullet();
 			timeToBullet = FP.rand(10)+15;
+
+			rgRatio = FP.approach(rgRatio, 0.45, 0.0003);
 		}
 
 		timeToBullet--;
@@ -49,10 +54,11 @@ public class Game extends World {
 
 	public function addBullet() : void {
 		add(new Bullet(810, FP.rand(520) + 70,
-		               FP.rand(3) ? "green" : "red"));
+		               Math.random() < rgRatio ? "red" : "green"));
 	}
 
 	public static function gameOver() : void {
+		Data.save("love-spaceships-data");
 		FP.world = new Deathscreen();
 	}
 
