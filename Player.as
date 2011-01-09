@@ -20,7 +20,7 @@ public class Player extends Ship {
 		image = new Image(PLAYER);
 		image.centerOO();
 		type = "player";
-		setHitbox(50, 50);
+		setHitbox(30, 60);
 		centerOrigin();
 		health = 100;
 		score = 0;
