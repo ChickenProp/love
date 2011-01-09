@@ -15,8 +15,6 @@ public class Player extends Ship {
 
 	public var ow:Sfx = new Sfx(OW);
 
-	public static var health:int = 100;
-
 	public function Player() { 
 		x = 32;
 		y = 32;
@@ -64,5 +62,13 @@ public class Player extends Ship {
 			FP.engine.init();
 		}
 	}
+
+	public static function get health() : int {
+		return _health;
+	}
+	public static function set health(h:int) : void {
+		_health = FP.clamp(h, 0, 100);
+	}
+	public static var _health:int = 100;
 }
 }
