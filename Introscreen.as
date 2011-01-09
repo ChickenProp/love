@@ -21,7 +21,7 @@ public class Introscreen extends Graphicscreen {
 	}
 
 	override public function update () : void {
-		if (Input.check(Input.lastKey)) {
+		if (Input.lastKey && Input.pressed(Input.lastKey)) {
 			FP.world = new Game;
 		}
 	}

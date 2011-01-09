@@ -51,7 +51,7 @@ public class Game extends World {
 	}
 
 	public static function gameOver() : void {
-		FP.engine.init();
+		FP.world = new Deathscreen();
 	}
 
 	public static function get wifeHealth() : int { return _health; }
