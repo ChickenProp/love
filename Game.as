@@ -11,7 +11,7 @@ public class Game extends World {
 		paused = false;
 
 		add(new Player);
-		add(new Lifebar);
+		add(new Lifebar(function () : int { return Player.health; }));
 	}
 
 	override public function update() : void {
@@ -30,11 +30,16 @@ public class Game extends World {
 
 	public function doBulletSpawnStuff() : void {
 		if (timeToBullet <= 0) {
-			add(new Bullet(750, 300));
-			timeToBullet = 20;
+			addBullet();
+			timeToBullet = FP.rand(10)+15;
 		}
 
 		timeToBullet--;
+	}
+
+	public function addBullet() : void {
+		add(new Bullet(750, FP.rand(500) + 50,
+		               FP.rand(10) ? "red" : "green"));
 	}
 }
 

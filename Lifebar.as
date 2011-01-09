@@ -7,13 +7,15 @@ import net.flashpunk.utils.Key;
     
 public class Lifebar extends Entity {
         public var bar:Image = Image.createRect(100, 10, 0xFF0000);
+	public var fn:Function;
         
-        public function Lifebar() {
+        public function Lifebar(_fn:Function) {
 		super(0, 0, bar);
+		fn = _fn;
         }
         
 	override public function update():void {
-		bar.clipRect.width = Player.health;
+		bar.clipRect.width = fn();
 		bar.clear();
 		bar.updateBuffer();
 	}
