@@ -30,6 +30,9 @@ public class Game extends World {
 		doBulletSpawnStuff();
 
 		super.update();
+
+		if (wifeHealth <= 0)
+			gameOver();
 	}
 
 	public function doBulletSpawnStuff() : void {
@@ -44,6 +47,10 @@ public class Game extends World {
 	public function addBullet() : void {
 		add(new Bullet(750, FP.rand(500) + 50,
 		               FP.rand(10) ? "red" : "green"));
+	}
+
+	public static function gameOver() : void {
+		FP.engine.init();
 	}
 
 	public static function get wifeHealth() : int { return _health; }

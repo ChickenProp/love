@@ -59,7 +59,7 @@ public class Player extends Ship {
 		}
 
 		if (health <= 0) {
-			FP.engine.init();
+			Game.gameOver();
 		}
 	}
 

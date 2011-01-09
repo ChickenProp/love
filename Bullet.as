@@ -30,7 +30,7 @@ public class Bullet extends Ship {
 
 		if (x <= -10) {
 			FP.world.remove(this);
-			if (color == "red")
+			if (color == "green")
 				Game.wifeHealth -= 10;
 		}
 	}
