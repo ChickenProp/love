@@ -8,7 +8,7 @@ public class Main extends Engine {
 	}
 
 	override public function init():void {
-		FP.world = new Game;
+		FP.world = new Introscreen;
 	}
 
 }

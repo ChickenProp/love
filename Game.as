@@ -12,9 +12,9 @@ public class Game extends World {
 		wifeHealth = 100;
 
 		add(new Player);
-		add(new Lifebar(50, 10, 200, 20, "Health",
+		add(new Lifebar(50, 10, 200, 20, "Shields",
 		                function () : int { return 2*Player.health; }));
-		add(new Lifebar(550, 10, 200, 20, "Wife's health",
+		add(new Lifebar(550, 10, 200, 20, "Wife's shields",
 		                function () : int { return 2*wifeHealth; }));
 		add(new Scoredisplay);
 	}
