@@ -55,6 +55,8 @@ public class Player extends Ship {
 			Audio.player_die.play();
 			Game.gameOver();
 		}
+
+		doTint();
 	}
 
 	public function hitBullet(b:Bullet) : void {
@@ -65,6 +67,7 @@ public class Player extends Ship {
 			scoreMultiplier++;
 
 			Audio.player_ow.play();
+			flashOnce();
 		}
 		else {
 			health += 10;
@@ -77,6 +80,37 @@ public class Player extends Ship {
 		                              points.toString()));
 	}
 
+	// 0 - not flashing 1 - 
+	public var flashing:int = 0;
+	public var redness:int = 0;
+	public function flashOnce() : void {
+		flashing = 1;
+	}
+
+	public function doTint() : void {
+		if (flashing == 1 || flashing == 3) {
+			if (redness < 30)
+				redness++;
+			else
+				flashing++;
+		}
+
+		if (flashing == 2 || flashing == 4) {
+			if (redness > 0)
+				redness--;
+			else
+				flashing = (flashing == 2 ? 0 : 3);
+		}
+
+		var r:int, g:int, b:int;
+		b = 0xFF - redness*5;
+		g = b*0x100;
+		r = 0xFF0000;
+		image.color = r+g+b;
+
+		FP.console.log(image.color);
+	}
+	
 	public static function get health() : int {
 		return _health;
 	}
