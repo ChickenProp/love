@@ -67,7 +67,11 @@ public class Player extends Ship {
 			scoreMultiplier++;
 
 			Audio.player_ow.play();
-			flashOnce();
+			
+			if (health > 10)
+				flashOnce();
+			else
+				flashLots();
 		}
 		else {
 			health += 10;
@@ -80,16 +84,32 @@ public class Player extends Ship {
 		                              points.toString()));
 	}
 
-	// 0 - not flashing 1 - 
+	// 0 - not flashing, 1 - once/on, 2 - once/off,
+	// 3 - constant/on, 4 - constant/off
 	public var flashing:int = 0;
-	public var redness:int = 0;
+
+	//As a special case, if we're turning a once-flash off, turn it back on.
 	public function flashOnce() : void {
-		flashing = 1;
+		if (flashing == 0 || flashing == 2)
+			flashing = 1;
 	}
 
+	public function flashLots() : void {
+		if (flashing == 0 || flashing == 1)
+			flashing = 3;
+		if (flashing == 2)
+			flashing = 4;
+	}
+
+	public function stopFlash() : void {
+		if (flashing >= 3)
+			flashing -= 2;
+	}
+
+	public var redness:int = 0;
 	public function doTint() : void {
 		if (flashing == 1 || flashing == 3) {
-			if (redness < 30)
+			if (redness < 15)
 				redness++;
 			else
 				flashing++;
@@ -103,7 +123,7 @@ public class Player extends Ship {
 		}
 
 		var r:int, g:int, b:int;
-		b = 0xFF - redness*5;
+		b = 0xFF - redness*10;
 		g = b*0x100;
 		r = 0xFF0000;
 		image.color = r+g+b;
