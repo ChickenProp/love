@@ -76,6 +76,7 @@ public class Player extends Ship {
 		else {
 			health += 10;
 			Audio.player_yay.play();
+			stopFlash();
 		}
 
 		var points:int = Math.max(10 * scoreMultiplier, 10);
