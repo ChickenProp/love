@@ -5,14 +5,21 @@ import net.flashpunk.utils.*;
 
 public class Introscreen extends Graphicscreen {
 	public function Introscreen () {
-		var title1:Text = new Text("Love", 300, 200, 800, 600);
+		var wd:int = Main.screen_width;
+		var ht:int = Main.screen_height;
+
+		var opts:Object = { align: "center",
+				    width: Main.screen_width,
+				    height: Main.screen_height };
+
+		var title1:Text = new Text("Love", 0, 200, opts);
 		title1.size = 80;
 		var title2:Text = new Text("in the time of spaceships",
-		                           180, 270, 800, 600);
+		                           0, 270, opts);
 		title2.size = 30;
 
 		var presstoplay:Text = new Text("Press any key to play",
-		                                200, 400, 800, 600);
+		                                0, 400, opts);
 		presstoplay.size = 30;
 
 		graphics.add(title1);
