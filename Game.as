@@ -53,7 +53,7 @@ public class Game extends World {
 	}
 
 	public function addBullet() : void {
-		add(new Bullet(810, FP.rand(520) + 70,
+		add(new Bullet(Main.screen_width, FP.rand(520) + 70,
 		               Math.random() < rgRatio ? "red" : "green"));
 	}
 
