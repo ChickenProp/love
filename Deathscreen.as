@@ -7,21 +7,25 @@ public class Deathscreen extends Graphicscreen {
 	public var alpha:Number = 0;
 
 	public function Deathscreen () {
+		var opts:Object = { align: "center",
+				    width: Main.screen_width,
+				    height: Main.screen_height };
+
 		var msg1:Text = new Text("With your wife's dying breath,",
-		                            140, 200, 800, 600);
+		                         0, 200, opts);
 		msg1.size = 30;
 		
 		var msg2:Text = new Text("she forgives you.",
-		                         250, 240, 800, 600);
+		                         0, 240, opts);
 		msg2.size = 30;
 
 		var presstoplay:Text = new Text("Press any key to play again",
-		                                160, 400, 800, 600);
+		                                0, 400, opts);
 		presstoplay.size = 30;
 
 		var score:Text = new Text("Score: " + Player.score
 		                          + "\nHigh score: " + Player.highScore,
-		                          300, 500, 800, 600);
+		                          0, 500, opts);
 
 		graphics.add(msg1);
 		graphics.add(msg2);
