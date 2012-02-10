@@ -26,29 +26,11 @@ public class Player extends Ship {
 	}
 
 	override public function update() : void {
-		/*var a:Point = new Point(0,0);
-		var rate : Number = 2;
-
-		if (Input.check(Key.RIGHT))
-			a.x++;
-		if (Input.check(Key.LEFT))
-			a.x--;
-		if (Input.check(Key.UP))
-			a.y--;
-		if (Input.check(Key.DOWN))
-			a.y++;
-
-		a.normalize(1);
-		accel(rate * a.x, rate * a.y);
-
-		friction();
-		move();*/
-
 		x = Input.mouseX;
 		y = Input.mouseY;
 
-		x = FP.clamp(x, 15, 785);
-		y = FP.clamp(y, 90, 570);
+		x = FP.clamp(x, halfWidth, Main.screen_width - halfWidth);
+		y = FP.clamp(y, 90, Main.screen_height - halfHeight);
 
 		var b:Bullet = collide("bullet", x, y) as Bullet;
 		if (b)
