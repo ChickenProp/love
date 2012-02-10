@@ -19,7 +19,7 @@ public class Deathscreen extends Graphicscreen {
 		                         0, 240, opts);
 		msg2.size = 30;
 
-		var presstoplay:Text = new Text("Press any key to play again",
+		var presstoplay:Text = new Text("Press to play again",
 		                                0, 400, opts);
 		presstoplay.size = 30;
 
@@ -47,7 +47,7 @@ public class Deathscreen extends Graphicscreen {
 				i.alpha = alpha;
 		        });
 
-		if (alpha >= 1 && Input.lastKey && Input.pressed(Input.lastKey))
+		if (alpha >= 1 && Input.mousePressed)
 			FP.world = new Game;
 	}
 }

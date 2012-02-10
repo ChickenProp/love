@@ -18,7 +18,7 @@ public class Introscreen extends Graphicscreen {
 		                           0, 270, opts);
 		title2.size = 30;
 
-		var presstoplay:Text = new Text("Press any key to play",
+		var presstoplay:Text = new Text("Press to play",
 		                                0, 400, opts);
 		presstoplay.size = 30;
 
@@ -28,7 +28,7 @@ public class Introscreen extends Graphicscreen {
 	}
 
 	override public function update () : void {
-		if (Input.lastKey && Input.pressed(Input.lastKey)) {
+		if (Input.mousePressed) {
 			FP.world = new Game;
 		}
 	}

@@ -30,7 +30,7 @@ public class Player extends Ship {
 		y = Input.mouseY;
 
 		x = FP.clamp(x, halfWidth, Main.screen_width - halfWidth);
-		y = FP.clamp(y, 90, Main.screen_height - halfHeight);
+		y = FP.clamp(y, 60 + halfHeight, Main.screen_height - halfHeight);
 
 		var b:Bullet = collide("bullet", x, y) as Bullet;
 		if (b)
