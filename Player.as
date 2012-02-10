@@ -11,7 +11,7 @@ public class Player extends Ship {
 
 	public static var scoreMultiplier:int;
 
-	public function Player() { 
+	public function Player() {
 		x = 50;
 		y = 300;
 
@@ -26,7 +26,7 @@ public class Player extends Ship {
 	}
 
 	override public function update() : void {
-		var a:Point = new Point(0,0);
+		/*var a:Point = new Point(0,0);
 		var rate : Number = 2;
 
 		if (Input.check(Key.RIGHT))
@@ -42,7 +42,10 @@ public class Player extends Ship {
 		accel(rate * a.x, rate * a.y);
 
 		friction();
-		move();
+		move();*/
+
+		x = Input.mouseX;
+		y = Input.mouseY;
 
 		x = FP.clamp(x, 15, 785);
 		y = FP.clamp(y, 90, 570);
