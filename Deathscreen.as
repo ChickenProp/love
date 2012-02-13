@@ -24,7 +24,7 @@ public class Deathscreen extends Graphicscreen {
 
 		var msgT:Text = new Text(msg, 0, 200, opts);
 		msgT.size = 32;
-		msgT.leading = 8;
+		msgT.leading = 4;
 
 		var presstoplay:Text = new Text("Press to play again",
 		                                0, 400, opts);
