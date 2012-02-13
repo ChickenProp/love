@@ -26,8 +26,8 @@ public class Player extends Ship {
 	}
 
 	override public function update() : void {
-		x = Input.mouseX;
-		y = Input.mouseY;
+		x = x + (Input.mouseX - x)*0.3;
+		y = y + (Input.mouseY - y)*0.3;
 
 		x = FP.clamp(x, halfWidth, Main.screen_width - halfWidth);
 		y = FP.clamp(y, 60 + halfHeight, Main.screen_height - halfHeight);
@@ -38,7 +38,7 @@ public class Player extends Ship {
 
 		if (health <= 0) {
 			Audio.player_die.play();
-			Game.gameOver();
+			Game.gameOver(0);
 		}
 
 		doTint();
@@ -66,7 +66,7 @@ public class Player extends Ship {
 
 		var points:int = Math.max(10 * scoreMultiplier, 10);
 		score += points;
-		FP.world.add(new Textparticle(b.x, b.y,
+		FP.world.add(new Textparticle(b.x, b.y, b.vel.x,
 		                              points.toString()));
 	}
 

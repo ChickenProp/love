@@ -11,11 +11,11 @@ public class Bullet extends Ship {
 
 	public var color:String = "";
 
-	public function Bullet(_x:Number, _y:Number, _color:String) {
+	public function Bullet(_x:Number, _y:Number, vx:Number, _color:String) {
 		x = _x;
 		y = _y;
 		color = _color;
-		vel = new Point(-3, 0);
+		vel = new Point(-vx, 0);
 		type = "bullet";
 		setHitbox(10, 10);
 

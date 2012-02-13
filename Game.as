@@ -4,9 +4,13 @@ import net.flashpunk.graphics.*;
 import net.flashpunk.utils.*;
 
 public class Game extends World {
+	[ Embed(source = 'media/background.png') ]
+	public static const BACKGROUND:Class;
 	public static var paused:Boolean = false;
 	public var timeToBullet:int = 0;
 	public var rgRatio:Number = 0.3;
+	public var bulletvel:Number = 6;
+	public var bg:Backdrop;
 
 	public function Game () {
 		paused = false;
@@ -18,6 +22,10 @@ public class Game extends World {
 		add(new Lifebar(550, 10, 200, 20, "Wife's shields",
 		                function () : int { return 2*wifeHealth; }));
 		add(new Scoredisplay);
+
+		bg = new Backdrop(BACKGROUND, true, false);
+		bg.y = 60;
+		addGraphic(bg);
 
 		Audio.music.loop();
 	}
@@ -37,8 +45,10 @@ public class Game extends World {
 
 		if (wifeHealth <= 0) {
 			Audio.wife_die.play();
-			gameOver();
+			gameOver(1);
 		}
+
+		bg.x -= 1;
 	}
 
 	public function doBulletSpawnStuff() : void {
@@ -54,12 +64,13 @@ public class Game extends World {
 
 	public function addBullet() : void {
 		add(new Bullet(Main.screen_width, FP.rand(520) + 70,
+		               bulletvel + FP.random*3-1,
 		               Math.random() < rgRatio ? "red" : "green"));
 	}
 
-	public static function gameOver() : void {
+	public static function gameOver(which:int) : void {
 		Data.save("love-spaceships-data");
-		FP.world = new Deathscreen();
+		FP.world = new Deathscreen(which);
 	}
 
 	public static function get wifeHealth() : int { return _health; }

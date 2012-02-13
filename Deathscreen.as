@@ -6,29 +6,35 @@ import net.flashpunk.utils.*;
 public class Deathscreen extends Graphicscreen {
 	public var alpha:Number = 0;
 
-	public function Deathscreen () {
+	public function Deathscreen (which:int) {
 		var opts:Object = { align: "center",
 				    width: Main.screen_width,
 				    height: Main.screen_height };
 
-		var msg1:Text = new Text("With your wife's dying breath,",
-		                         0, 200, opts);
-		msg1.size = 30;
-		
-		var msg2:Text = new Text("she forgives you.",
-		                         0, 240, opts);
-		msg2.size = 30;
+		var msg:String;
+		if (which) {
+			msg = "With your wife's dying breath,\n"
+				+ "she forgives you.";
+		}
+		else {
+			msg = "In your last moments,\nall you can do\n"
+				+ "is apologize.";
+		}
+
+
+		var msgT:Text = new Text(msg, 0, 200, opts);
+		msgT.size = 32;
+		msgT.leading = 8;
 
 		var presstoplay:Text = new Text("Press to play again",
 		                                0, 400, opts);
-		presstoplay.size = 30;
+		presstoplay.size = 32;
 
 		var score:Text = new Text("Score: " + Player.score
 		                          + "\nHigh score: " + Player.highScore,
 		                          0, 500, opts);
 
-		graphics.add(msg1);
-		graphics.add(msg2);
+		graphics.add(msgT);
 		graphics.add(presstoplay);
 		graphics.add(score);
 
