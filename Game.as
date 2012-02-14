@@ -78,6 +78,14 @@ public class Game extends World {
 		_health = FP.clamp(h, 0, 100);
 	}
 	public static var _health:int = 100;
+
+	public static function mouseInScreen () : Boolean {
+		var x:Number = Input.mouseX;
+		var y:Number = Input.mouseY;
+
+		return x >= 0 && x <= Main.screen_width
+			&& y >= 0 && y <= Main.screen_height;
+	}
 }
 
 }

@@ -11,9 +11,12 @@ public class Player extends Ship {
 
 	public static var scoreMultiplier:int;
 
+	public var targetX:Number = 50;
+	public var targetY:Number = 300;
+
 	public function Player() {
-		x = 50;
-		y = 300;
+		x = targetX;
+		y = targetY;
 
 		image = new Image(PLAYER);
 		image.centerOO();
@@ -26,11 +29,15 @@ public class Player extends Ship {
 	}
 
 	override public function update() : void {
-		x = x + (Input.mouseX - x)*0.3;
-		y = y + (Input.mouseY - y)*0.3;
+		if (Game.mouseInScreen()) {
+			targetX = Input.mouseX;
+			targetY = Input.mouseY;
+		}
+		x = x + (targetX - x)*0.3;
+		y = y + (targetY - y)*0.3;
 
 		x = FP.clamp(x, halfWidth, Main.screen_width - halfWidth);
-		y = FP.clamp(y, 60 + halfHeight, Main.screen_height - halfHeight);
+		y = FP.clamp(y, 60+halfHeight, Main.screen_height - halfHeight);
 
 		var b:Bullet = collide("bullet", x, y) as Bullet;
 		if (b)
@@ -52,7 +59,7 @@ public class Player extends Ship {
 			scoreMultiplier++;
 
 			Audio.player_ow.play();
-			
+
 			if (health > 10)
 				flashOnce();
 			else
