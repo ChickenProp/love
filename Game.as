@@ -66,6 +66,7 @@ public class Game extends World {
 		add(new Bullet(Main.screen_width, FP.rand(520) + 70,
 		               bulletvel + FP.random*3-1,
 		               Math.random() < rgRatio ? "red" : "green"));
+		bulletvel += 0.01;
 	}
 
 	public static function gameOver(which:int) : void {
