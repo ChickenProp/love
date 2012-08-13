@@ -3,10 +3,10 @@ import net.flashpunk.*;
 import net.flashpunk.utils.*;
 import net.flashpunk.debug.*;
 
-[SWF(width="1024", height="600")]
+[SWF(width="800", height="600")]
 
 public class Main extends Engine {
-	public static var screen_width:int = 1024;
+	public static var screen_width:int = 800;
 	public static var screen_height:int = 600;
 
 	// I was getting errors from the blackberry server about the .bar file
